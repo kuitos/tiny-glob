@@ -1,10 +1,10 @@
 const fs = require('fs');
 const globrex = require('globrex');
 const globalyzer = require('globalyzer');
-const { join, resolve, relative } = require('path');
+const { join, resolve, relative, sep } = require('path');
 const { promisify } = require('util');
 
-console.log( require('os').platform(), process.platform );
+console.log(process.platform, sep, new RegExp(sep));
 
 const isHidden = /(^|\/)\.[^\/\.]/g;
 const giveup = rgx => !rgx || rgx == '/^((?:[^\\/]*(?:\\/|$))*)$/';
