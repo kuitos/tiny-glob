@@ -4,7 +4,7 @@ const globalyzer = require('globalyzer');
 const { join, resolve, relative, sep } = require('path');
 const { promisify } = require('util');
 
-console.log(process.platform, sep, new RegExp(sep));
+console.log(process.platform, sep);
 
 const isHidden = /(^|\/)\.[^\/\.]/g;
 const giveup = rgx => !rgx || rgx == '/^((?:[^\\/]*(?:\\/|$))*)$/';
