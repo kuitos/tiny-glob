@@ -54,7 +54,9 @@ async function walk(output, prefix, lexer, opts, dirname='', level=0) {
  * @returns {Array} array containing matching files
  */
 module.exports = async function (str, opts={}) {
+  console.log('\n> str', str);
   let glob = globalyzer(str);
+  console.log('> glob', glob);
 
   if (!glob.isGlob) return fs.existsSync(str) ? [str] : [];
   if (opts.flush) CACHE = {};
