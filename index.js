@@ -4,7 +4,7 @@ const globalyzer = require('globalyzer');
 const { join, resolve, relative, sep } = require('path');
 const { promisify } = require('util');
 
-const isHidden = /(^|\/)\.[^\/\.]/g;
+const isHidden = /(^|(\\+|\/))\.[^(\\+|\/)\.]/g;
 const giveup = rgx => !rgx || rgx == '/^((?:[^\\/]*(?:\\/|$))*)$/';
 const readdir = promisify(fs.readdir);
 
@@ -54,7 +54,7 @@ async function walk(output, prefix, lexer, opts, dirname='', level=0) {
  * @returns {Array} array containing matching files
  */
 module.exports = async function (str, opts={}) {
-  str = str.replace(/\\+|\//g, sep);
+  // str = str.replace(/\\+|\//g, sep);
   console.log('\n\n\n> str', str);
   let glob = globalyzer(str);
   console.log('> glob', glob);
