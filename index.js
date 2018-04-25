@@ -4,6 +4,8 @@ const globalyzer = require('globalyzer');
 const { join, resolve, relative } = require('path');
 const { promisify } = require('util');
 
+console.log( require('os').platform(), process.platform );
+
 const isHidden = /(^|\/)\.[^\/\.]/g;
 const giveup = rgx => !rgx || rgx == '/^((?:[^\\/]*(?:\\/|$))*)$/';
 const readdir = promisify(fs.readdir);
