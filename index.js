@@ -22,6 +22,7 @@ async function walk(output, prefix, lexer, opts, dirname='', level=0) {
   for (; i < len; i++) {
     fullpath = join(dir, file=files[i]);
     relpath = dirname ? join(dirname, file) : file;
+    console.log('~~> relpath', relpath, lexer.regex.test(relpath));
     if (!dot && isHidden.test(relpath)) continue;
     isMatch = lexer.regex.test(relpath);
 
@@ -61,6 +62,9 @@ module.exports = async function (str, opts={}) {
   let matches = [];
   opts.cwd = opts.cwd || '.';
   const patterns = globrex(glob.glob, { globstar:true, extended:true });
+
+  console.log('> patterns.regex', patterns.regex);
+  console.log('> patterns.segments', patterns.segments);
 
   await walk(matches, glob.base, patterns, opts, '.', 0);
 
